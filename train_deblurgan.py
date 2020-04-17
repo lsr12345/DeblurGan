@@ -7,7 +7,6 @@
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras import backend as K
-# from keras.layers.merge import _Merge
 
 import tensorflow_addons as tfa
 
@@ -34,6 +33,7 @@ keras.utils.get_custom_objects().update({'SwitchNormalization': SwitchNormalizat
 # In[3]:
 
 
+Epochs = 2
 lr = 1e-4
 batch_size = 1
 LAMBDA = 1.0  # 100
@@ -453,7 +453,7 @@ optimizer_d = keras.optimizers.Adam(lr=lr, beta_1=0.5, beta_2=0.9)
 # In[13]:
 
 
-# @tf.function
+@tf.function
 def train_step(blur_image, sharp_image, epoch, generator, discriminator, vgg, d_step=5, mode='wgan_gp'):
 
     for step in range(d_step):
@@ -579,5 +579,5 @@ A = './data/train/A/'
 B = './data/train/B/'
 dataset = make_train_dataset(A, B)
 
-train(dataset, 2, './test.png', mode='wgan_gp')  # 'wgan_gp'  'dcgan'  'wgan'
+train(dataset, Epochs, './test.png', mode='wgan_gp')  # 'wgan_gp'  'dcgan'  'wgan'
 
