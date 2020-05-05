@@ -1,2 +1,2 @@
 # DeblurGan
-re_implement DeblurGan base tensorflow2.
+implement DeblurGan base tensorflow2.
